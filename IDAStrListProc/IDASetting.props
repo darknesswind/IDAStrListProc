@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <IdaSdkVersion>6.8</IdaSdkVersion>
+    <IdaSdkIncludeDir>D:\Data\Kpan\破解\IDAPro6.8\sdk\include</IdaSdkIncludeDir>
+    <IdaInstallDir>D:\Data\Kpan\破解\IDAPro6.8\</IdaInstallDir>
+    <IdaSdkLibraryDir>D:\Data\Kpan\破解\IDAPro6.8\sdk\lib</IdaSdkLibraryDir>
+    <IdaPluginDir>$(IdaInstallDir)\plugins</IdaPluginDir>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="IdaSdkVersion">
+      <Value>$(IdaSdkVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IdaSdkIncludeDir">
+      <Value>$(IdaSdkIncludeDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IdaInstallDir">
+      <Value>$(IdaInstallDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IdaSdkLibraryDir">
+      <Value>$(IdaSdkLibraryDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IdaPluginDir">
+      <Value>$(IdaPluginDir)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

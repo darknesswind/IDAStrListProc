@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug 32-bit|Win32">
       <Configuration>Debug 32-bit</Configuration>
@@ -20,21 +20,22 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E5C66921-C7DA-468E-992C-AF727BD65D93}</ProjectGuid>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>IDAStrListProc</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.CPP.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug 32-bit|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <UseOfAtl>false</UseOfAtl>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 32-bit|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <UseOfAtl>false</UseOfAtl>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -42,34 +43,35 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug 64-bit|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <UseOfAtl>false</UseOfAtl>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 64-bit|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <UseOfAtl>false</UseOfAtl>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCInstallDir)VCWizards\AppWiz\IDA Pro\MyProperties.props" />
-  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug 32-bit|Win32'">
     <Import Project="$(LocalAppData)\Microsoft\VisualStudio\12.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\12.0\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="IDASetting.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release 32-bit|Win32'">
     <Import Project="$(LocalAppData)\Microsoft\VisualStudio\12.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\12.0\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="IDASetting.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug 64-bit|Win32'">
     <Import Project="$(LocalAppData)\Microsoft\VisualStudio\12.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\12.0\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="IDASetting.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release 64-bit|Win32'">
     <Import Project="$(LocalAppData)\Microsoft\VisualStudio\12.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\12.0\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="IDASetting.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
   </PropertyGroup>
@@ -78,7 +80,7 @@
     <IntDir>Build\$(IdaSdkVersion)\$(Configuration)</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.p64</TargetExt>
-    <ExtensionsToDeleteOnClean>$(ExtensionsToDeleteOnClean)%3b*.p64</ExtensionsToDeleteOnClean>
+    <ExtensionsToDeleteOnClean>*.p64;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
@@ -87,7 +89,7 @@
     <IntDir>Build\$(IdaSdkVersion)\$(Configuration)</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.plw</TargetExt>
-    <ExtensionsToDeleteOnClean>$(ExtensionsToDeleteOnClean)%3b*.plw</ExtensionsToDeleteOnClean>
+    <ExtensionsToDeleteOnClean>*.plw;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
@@ -96,7 +98,7 @@
     <IntDir>Build\$(IdaSdkVersion)\$(Configuration)</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.plw</TargetExt>
-    <ExtensionsToDeleteOnClean>$(ExtensionsToDeleteOnClean)%3b*.plw</ExtensionsToDeleteOnClean>
+    <ExtensionsToDeleteOnClean>*.plw;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
@@ -105,7 +107,7 @@
     <IntDir>Build\$(IdaSdkVersion)\$(Configuration)</IntDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.p64</TargetExt>
-    <ExtensionsToDeleteOnClean>$(ExtensionsToDeleteOnClean)%3b*.p64</ExtensionsToDeleteOnClean>
+    <ExtensionsToDeleteOnClean>*.p64;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
@@ -304,8 +306,8 @@
   <ItemGroup>
     <ClCompile Include="Source\IDAStrListProc.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="IDASetting.props" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.CPP.targets" />
-  <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCInstallDir)VCWizards\AppWiz\IDA Pro\MyProperties.targets" />
-  </ImportGroup>
 </Project>
