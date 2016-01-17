@@ -116,7 +116,7 @@
       <AdditionalIncludeDirectories>Include;$(IdaSdkIncludeDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MinimalRebuild>true</MinimalRebuild>
@@ -132,7 +132,7 @@
       <CallingConvention>StdCall</CallingConvention>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_USRDLL;_DEBUG;_CRT_SECURE_NO_DEPRECATE;MAXSTR=1024;NO_OBSOLETE_FUNCS;__NT__;__IDP__;__EA64__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -161,7 +161,7 @@
       <AdditionalIncludeDirectories>Include;$(IdaSdkIncludeDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MinimalRebuild>true</MinimalRebuild>
@@ -177,14 +177,14 @@
       <CallingConvention>StdCall</CallingConvention>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_USRDLL;_DEBUG;_CRT_SECURE_NO_DEPRECATE;MAXSTR=1024;NO_OBSOLETE_FUNCS;__NT__;__IDP__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>$(IdaSdkLibraryDir)x86_win_vc_32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(IdaSdkLibraryDir)ida.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(IdaSdkLibraryDir)\x86_win_vc_32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ida.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <LinkTimeCodeGeneration />
       <EnableCOMDATFolding />
@@ -209,7 +209,7 @@
       <AdditionalIncludeDirectories>Include;$(IdaSdkIncludeDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <Optimization>MaxSpeed</Optimization>
@@ -223,7 +223,7 @@
       <CallingConvention>StdCall</CallingConvention>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_USRDLL;NDEBUG;_CRT_SECURE_NO_DEPRECATE;MAXSTR=1024;NO_OBSOLETE_FUNCS;__NT__;__IDP__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -252,7 +252,7 @@
       <AdditionalIncludeDirectories>Include;$(IdaSdkIncludeDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <Optimization>MaxSpeed</Optimization>
@@ -266,7 +266,7 @@
       <CallingConvention>StdCall</CallingConvention>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_USRDLL;NDEBUG;_CRT_SECURE_NO_DEPRECATE;MAXSTR=1024;NO_OBSOLETE_FUNCS;__NT__;__IDP__;__EA64__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -294,8 +294,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Include\DictTree.h" />
+    <ClInclude Include="Include\Gnenbu.h" />
     <ClInclude Include="Include\IDAStrListProc.h" />
     <ClInclude Include="Include\Resource.h" />
+    <ClInclude Include="Include\stdafx.h" />
+    <ClInclude Include="Include\THLabyrinth2.h" />
+    <ClInclude Include="Include\tools.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Source\IDAStrListProc.rc" />
@@ -304,7 +309,15 @@
     <Manifest Include="res\IDAStrListProc.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Gnenbu.cpp" />
     <ClCompile Include="Source\IDAStrListProc.cpp" />
+    <ClCompile Include="Source\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug 64-bit|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug 32-bit|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release 64-bit|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release 32-bit|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\THLabyrinth2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="IDASetting.props" />

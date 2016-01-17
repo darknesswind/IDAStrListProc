@@ -24,6 +24,21 @@
     <ClInclude Include="Include\IDAStrListProc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Include\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\THLabyrinth2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Gnenbu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\tools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\DictTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Source\IDAStrListProc.rc">
@@ -37,6 +52,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\IDAStrListProc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\THLabyrinth2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Gnenbu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

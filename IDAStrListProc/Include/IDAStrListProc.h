@@ -15,14 +15,6 @@
 
 #pragma once
 
-#ifdef __NT__
-#include <windows.h>
-#endif
-#include <ida.hpp>
-#include <idp.hpp>
-#include <loader.hpp>
-#include <kernwin.hpp>
-#include "resource.h"
 
 
 

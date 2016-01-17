@@ -3,10 +3,11 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
     <IdaSdkVersion>6.8</IdaSdkVersion>
-    <IdaSdkIncludeDir>D:\Data\Kpan\破解\IDAPro6.8\sdk\include</IdaSdkIncludeDir>
+    <IdaSdkDir>D:\Data\Kpan\破解\IDAPro6.8\sdk\</IdaSdkDir>
+    <IdaSdkIncludeDir>$(IdaSdkDir)\include\</IdaSdkIncludeDir>
+    <IdaSdkLibraryDir>$(IdaSdkDir)\lib\</IdaSdkLibraryDir>
     <IdaInstallDir>D:\Data\Kpan\破解\IDAPro6.8\</IdaInstallDir>
-    <IdaSdkLibraryDir>D:\Data\Kpan\破解\IDAPro6.8\sdk\lib</IdaSdkLibraryDir>
-    <IdaPluginDir>$(IdaInstallDir)\plugins</IdaPluginDir>
+    <IdaPluginDir>$(IdaInstallDir)\plugins\</IdaPluginDir>
   </PropertyGroup>
   <PropertyGroup />
   <ItemDefinitionGroup />
@@ -14,14 +15,17 @@
     <BuildMacro Include="IdaSdkVersion">
       <Value>$(IdaSdkVersion)</Value>
     </BuildMacro>
+    <BuildMacro Include="IdaSdkDir">
+      <Value>$(IdaSdkDir)</Value>
+    </BuildMacro>
     <BuildMacro Include="IdaSdkIncludeDir">
       <Value>$(IdaSdkIncludeDir)</Value>
     </BuildMacro>
-    <BuildMacro Include="IdaInstallDir">
-      <Value>$(IdaInstallDir)</Value>
-    </BuildMacro>
     <BuildMacro Include="IdaSdkLibraryDir">
       <Value>$(IdaSdkLibraryDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IdaInstallDir">
+      <Value>$(IdaInstallDir)</Value>
     </BuildMacro>
     <BuildMacro Include="IdaPluginDir">
       <Value>$(IdaPluginDir)</Value>
