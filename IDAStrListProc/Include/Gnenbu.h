@@ -5,6 +5,15 @@ class RawStrReader;
 class Gnenbu : public IPlugin
 {
 public:
+	enum Option : ushort
+	{
+		optNone = 0,
+		optFilterOutAscii = 0x1,
+
+		optDefault = optFilterOutAscii
+	};
+
+public:
 	Gnenbu();
 	~Gnenbu();
 
@@ -21,6 +30,7 @@ protected:
 	ea_t FindXRefString(RawStrReader& reader, bool& bAllLatin);
 	FILE* OpenSaveFile(std::string &filePath);
 	void EncodeCtrlChar(qwstring& wstr);
+	void ReadFilterConfig(ea_t& defBegin, ea_t& defEnd);
 
 	void Import();
 	void ImportStrList(FILE* hFile);
@@ -31,5 +41,6 @@ protected:
 private:
 	StrRefMap m_refMap;
 	wstr_dict m_filter;
+	Option m_opt;
 };
 

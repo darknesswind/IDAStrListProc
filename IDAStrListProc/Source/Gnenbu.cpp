@@ -4,6 +4,7 @@
 #include "tools.h"
 
 Gnenbu::Gnenbu()
+	: m_opt(optDefault)
 {
 	m_filter.insert(L"ｰ・");
 	m_filter.insert(L"ﾜ踰");
@@ -29,10 +30,11 @@ void Gnenbu::run(int arg)
 	char form[] = "Game Text Dumper:\n"
 		"Action:\n"
 		"<Export:R>\n"
-		"<Import:R>>\n";
+		"<Import:R>>\n"
+		"<Filter out ascii string:C>>\n";
 
 	ushort sel = 0;
-	int res = AskUsingForm_c(form, &sel);
+	int res = AskUsingForm_c(form, &sel, &m_opt);
 	if (res)
 	{
 		if (0 == sel)
@@ -105,6 +107,30 @@ void Gnenbu::EncodeCtrlChar(qwstring& wstr)
 	}
 }
 
+void Gnenbu::ReadFilterConfig(ea_t& defBegin, ea_t& defEnd)
+{
+	std::string filePath;
+	ssize_t filePathLen = get_input_file_path(NULL, 0);
+	filePath.resize(filePathLen, '\0');
+	get_input_file_path(&filePath[0], filePathLen);
+	if (filePath.back() == '\0')
+		filePath.pop_back();
+	filePath.append(".ini");
+
+	ea_t offBegin = 0;
+	ea_t offEnd = defEnd - defBegin;
+
+	char buff[0x100] = { 0 };
+	if (GetPrivateProfileStringA("filter", "begin", "", buff, 0x100, filePath.c_str()))
+		atob(buff, &offBegin);
+
+	if (GetPrivateProfileStringA("filter", "end", "", buff, 0x100, filePath.c_str()))
+		atob(buff, &offEnd);
+
+	defEnd = defBegin + offEnd;
+	defBegin = defBegin + offBegin;
+}
+
 void Gnenbu::ExportStrList(FILE* hFile)
 {
 	ea_t eaBegin = 0;
@@ -117,12 +143,12 @@ void Gnenbu::ExportStrList(FILE* hFile)
 	eaEnd = pRData->endEA;
 	refresh_strlist(eaBegin, eaEnd);
 
+	ReadFilterConfig(eaBegin, eaEnd);
+
 	RawStrReader reader(eaBegin, eaEnd);
 	while (reader.readNext())
 	{
-		ea_t offset = reader.curAddr() - eaBegin;
-		if (offset < 0x00061E60 || offset > 0x0007AAD8)
-			continue;
+		ea_t offset = reader.curAddr() - pRData->startEA;
 
 		ByteArray& dat = reader.getBytes();
 		bool bLatin = true;
@@ -132,10 +158,10 @@ void Gnenbu::ExportStrList(FILE* hFile)
 			if (!addr)
 				continue;
 
-			offset = addr - eaBegin;
+			offset = addr - pRData->startEA;
 		}
 
-		if (bLatin)
+		if (bLatin && (m_opt & optFilterOutAscii))
 		{
 			if (memcmp("jpn", dat.data(), dat.size()) &&
 				memcmp("japanese", dat.data(), dat.size()))

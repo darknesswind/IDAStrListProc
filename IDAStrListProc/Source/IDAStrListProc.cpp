@@ -136,15 +136,21 @@ void runPlugin(int arg)
 
 	char form[] = "Game Text Dumper:\n"
 		"Game:\n"
-		"<THLabyrinth2:R>\n"
-		"<enbu_g:R>>\n";
+		"<General:R>\n"
+		"<THLabyrinth2:R>>\n";
 
 	ushort sel = 0;
 	int res = AskUsingForm_c(form, &sel);
 	if (res)
 	{
-		Gnenbu plugin;
-		plugin.run(arg);
+		switch (sel)
+		{
+		case 0:
+		default:
+			Gnenbu plugin;
+			plugin.run(arg);
+			break;
+		}
 	}
 }
 
